@@ -1,0 +1,44 @@
+
+
+<% if @posts.empty? %>
+  <p>No hay publicaciones aún. ¡Crea una nueva!</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Contenido</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= truncate(post.body, length: 50) %></td>
+          <td>
+            <%= link_to 'Ver', post %> |
+            <%= link_to 'Editar', edit_post_path(post) %> |
+            <%= link_to 'Eliminar', post, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<p style="color: green"><%= notice %></p> 
+
+<% content_for :title, "Posts" %>
+
+<h1>Task list for everyone</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    
+  <% end %>
+</div>
+
+<%= link_to "New task", new_post_path %> 
+
