@@ -32,21 +32,3 @@
 </div>
 
 
-
-
-<p style="color: green"><%= notice %></p> 
-
-<% content_for :title, "Posts" %>
-
-<h1>Task list for everyone</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    
-  <% end %>
-</div>
-
-<%= link_to "New task", new_post_path %> 
-
-
